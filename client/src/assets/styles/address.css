@@ -1,0 +1,797 @@
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding: 0.5em 3em 0.5em;
+}
+
+.signIn {
+  padding: 1em;
+  border-radius: 1.2em;
+  margin-left: 1em;
+  cursor: pointer;
+  background-color: #2196f3;
+  border: 2px solid #2196f3;
+  font-weight: 700;
+  font-size: 15px;
+  color: white;
+  transition: all 0.5s ease-out;
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+}
+
+.leftSide {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.middleOfScreen {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.pizzaWrapper {
+  padding: 3em;
+  margin-right: 2%;
+  min-height: 550px;
+  border: 1px solid black;
+  padding: 3em;
+  max-width: 656px;
+  width: 100%;
+}
+
+.title h2, .signInRightSide h2 {
+  margin: 0 0 20px 0;
+  padding: 5px;
+  text-align: center;
+  font-size: 30px;
+  color: lightslategray;
+  border-bottom: solid 1px black;
+}
+
+.doughHeader, .orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.doughtRightSide, .orderRightSide {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.doughtRightSide button, .orderButton {
+  border: none;
+  border-radius: 5px;
+  background-color: #68B25B;
+  margin-left: 10px;
+  padding: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+.dough, .order {
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+
+.popUpIngredients {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(50, 50, 50, 0.5));
+  z-index: 100 !important;
+}
+
+.innerDiv {
+  background-color: white;
+  padding: 1em 3em 3em;
+  border-radius: 5px;
+}
+
+.rulesHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px #e5e5e5;
+}
+
+.ingredients img {
+  width: 15px;
+  height: 15px;
+}
+
+.ingredient {
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+
+.ingredients {
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.ingredientsHeader {
+  text-align: center;
+}
+
+.ingredientsHeader h2 {
+  margin: 0 0 20px 0;
+  padding: 5px;
+  text-align: center;
+  font-size: 30px;
+  color: lightslategray;
+  border-bottom: solid 1px black;
+}
+
+.innerDiv button {
+  border: none;
+  border-radius: 5px;
+  background-color: #68B25B;
+  margin-top: 10px;
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+  float: right;
+}
+
+.ingridientsLeftSide {
+  display: flex;
+  align-items: center;
+}
+
+.cartWrapper {
+  border: 1px solid black;
+  padding: 3em;
+  max-width: 500px;
+  min-width: 402px;
+  max-height: 600px;
+  position: relative;
+  padding-bottom: 4em;
+}
+
+.orderIngredient {
+  display: contents;
+}
+
+.orderIngredients {
+  display: flex;
+}
+
+.cartContent {
+  height: 70%;
+  overflow: auto;
+  padding-right: 10px;
+}
+
+.historyOrders{
+  height: 500px;
+  overflow: auto;
+  padding-right: 10px;
+}
+
+.delete.address{
+  right: 4px;
+}
+
+.cartFooter {
+  border-top: 1px solid black;
+}
+
+.footerMoney {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.footerBotton button {
+  border: none;
+  border-radius: 5px;
+  background-color: #68B25B;
+  padding: 6px;
+  height: 30px;
+  width: 20%;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  right: 45px;
+  bottom: 25px;
+}
+
+.orderWrapper {
+  align-items: center;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.addressWrapper, .paymentWrapper {
+  padding: 1em 3em;
+  border: 1px solid black;
+  max-width: 1000px;
+  margin: 3em auto;
+}
+
+.address, .addressNew, .addressForm {
+  border: 1px solid black;
+  width: 300px;
+  height: 100px;
+  float: left;
+  max-width: 100%;
+  position: relative;
+  margin-bottom: 2em;
+  transition: all 0.5s ease-out;
+}
+
+.addressNew:hover {
+  background-color: gray;
+  cursor: pointer;
+}
+
+.addressNew:hover .addresOverlay h1 {
+  visibility: visible;
+}
+
+.addresOverlay h1 {
+  margin: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  opacity: 1 !important;
+  visibility: hidden;
+}
+
+.addressNew h1 {
+  margin: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+
+.addresses {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  justify-items: center;
+}
+
+.addressHeader {
+  border-bottom: 1px solid black;
+  margin-bottom: 2em;
+}
+
+.paymentHeader {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.orders h2 {
+  font-weight: 300;
+}
+
+.orders {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.emptyCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  opacity: 0.5;
+}
+
+#minus {
+  color: white;
+  background-color: red;
+  font-weight: 900;
+  vertical-align: top;
+  height: 30px;
+  width: 30px;
+  border: none;
+}
+
+#plus {
+  color: white;
+  background-color: green;
+  font-weight: 900;
+  vertical-align: top;
+  height: 30px;
+  width: 30px;
+  border: none;
+}
+
+.signInLogo {
+  border-right: 1px solid black;
+}
+
+.signin, .signup {
+  display: flex;
+  padding: 3em;
+  font-weight: 700;
+  position: relative;
+}
+
+.signin input, .signup input {
+  padding: 0.2em;
+  margin: 9px 10px;
+}
+
+.signInRightSide h2 {
+  margin: 0px 30px 20px 30px;
+}
+
+.signinButton {
+  font-size: 18px;
+  text-transform: uppercase;
+  display: flex;
+}
+
+.password {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.password span {
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.nav-content {
+  position: absolute;
+  margin-top: 5px;
+  overflow: hidden;
+  background-color: #222;
+  color: white;
+  max-height: 0;
+  right: 50px;
+}
+
+.nav-content a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-content a:hover {
+  text-decoration: underline;
+}
+
+.nav-sub {
+  padding: 20px;
+}
+
+.nav-sub ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.nav-sub ul li a {
+  display: inline-block;
+  padding: 5px 0;
+}
+
+.avatar:focus~.nav-content {
+  max-height: 400px;
+  transition: max-height 0.4s ease-in;
+}
+
+.nav-content:hover {
+  max-height: 400px;
+}
+
+.orderButton {
+  padding: 10px 40px;
+  text-transform: uppercase;
+}
+
+.orderHistoryWrapper {
+  border: 1px solid black;
+  padding: 3em;
+  max-width: 700px;
+  width: 100%;
+  margin: 20px;
+}
+
+.orderHistoryHeader {
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.singleOrder {
+  padding: 1em 0em;
+  border-bottom: 1px solid black;
+}
+
+.topSide, .buttomSide {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.signInLogo img {
+  margin-right: 30px;
+}
+
+.notes textarea {
+  width: 100%;
+}
+
+.notes p {
+  margin: 0px;
+  margin-right: 5px;
+}
+
+.notes {
+  display: flex;
+}
+
+.order {
+  position: relative;
+  padding: 10px 0px;
+}
+
+.delete {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 5px;
+  right: 0;
+  border: 1px solid black;
+  border-radius: 50%;
+  font-weight: 700;
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.delete p {
+  position: absolute;
+  top: -19px;
+}
+
+.displayFlex {
+  padding: 5px 0px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+.displayFlex:first-child {
+  padding-top: 5px;
+}
+
+.displayFlex p {
+  margin: 0;
+  width: 70px;
+  margin-left: 10px;
+}
+
+.displayFlex input {
+  height: 20px;
+  border-radius: 5px;
+}
+
+.displayFlex input[type="number"] {
+  width: 50px;
+}
+
+.addressButtons {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.addressButtons button {
+  padding: 0.5em;
+  margin-right: 0.5em;
+  border: 1px solid black;
+  border-radius: 3px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#cancel {
+  background-color: red;
+}
+
+#add {
+  background-color: green;
+}
+
+.error::placeholder {
+  color: red;
+  font-style: italic;
+}
+
+#address {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.orderHistoryHeader h2 {
+  padding: 5px;
+  text-align: center;
+  font-size: 30px;
+  color: lightslategray;
+  margin: 0 0 20px 0;
+}
+
+.orderHistory {
+  margin-top: 3%;
+}
+
+#root {
+  margin: 0px 20px
+}
+
+@media (min-width: 376px) and (max-width: 575.98px) {
+  .popUpIngredients{
+      height: 100%;
+  }
+  
+  .middleOfScreen {
+      flex-direction: column;
+  }
+  .signin, .signup {
+      flex-direction: column;
+      padding: 2em 1em 2em !important;
+  }
+  #signupImg {
+      transform: none !important;
+  }
+  .signInLogo {
+      border-right: none;
+  }
+  .signInLogo img {
+      margin-right: 0px;
+  }
+  .pizzaWrapper {
+      margin-bottom: 30px;
+      margin-right: 0px;
+  }
+  .cartWrapper {
+      min-width: 100%;
+      height: 100vh;
+      margin-bottom: 20px;
+  }
+  .innerDiv {
+      padding: 2em 1em 3em;
+  }
+  .orderHistory {
+      flex-direction: row !important;
+  }
+  .price {
+      margin-left: 10px;
+  }
+  .addresses {
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+  .displayFlex input[type="number"] {
+      width: 30px;
+  }
+  .displayFlex input[type="text"] {
+      width: 58%;
+  }
+  .finish{
+      width: 80%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .signin, .signup {
+      padding: 2em 1em 2em !important
+  }
+  .cartWrapper {
+      min-width: 300px;
+  }
+}
+
+@media (max-width: 375.98px) {
+  .finish{
+      width: 80%;
+  }
+
+  #closeBatton {
+      right: -0.9em !important;
+      top: -2.5em !important;
+  }
+  .signin, .signup {
+      flex-direction: column;
+      padding: 2em 1em 2em !important;
+  }
+  #signupImg {
+      transform: none !important;
+  }
+  .signInLogo {
+      border-right: none;
+  }
+  .signInLogo img {
+      margin-right: 0px;
+  }
+  .pizzaWrapper {
+      margin-bottom: 30px;
+      margin-right: 0px;
+  }
+  #ingredients {
+      width: 310px !important;
+  }
+  .addresses {
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+  .displayFlex input[type="number"] {
+      width: 30px;
+  }
+  .displayFlex input[type="text"] {
+      width: 42%;
+  }
+  .addressButtons {
+      bottom: 5px;
+      right: 10px;
+  }
+  #cancel, #add {
+      height: 25px;
+  }
+  .middleOfScreen {
+      flex-direction: column;
+  }
+  .pizzaWrapper {
+      margin-bottom: 30px;
+      margin-right: 0px;
+
+  }
+
+  .popUpIngredients{
+      height: 100%;
+  }
+  .cartWrapper {
+      min-width: 100%;
+      height: 100vh;
+      margin-bottom: 20px;
+  }
+  .innerDiv {
+      padding: 2em 1em 3em;
+  }
+  .ingredient {
+      width: 300px;
+  }
+  .orderHistory {
+      flex-direction: row !important;
+  }
+  .price {
+      margin-left: 10px;
+  }
+  #radio {
+      margin-left: 6px !important;
+  }
+}
+
+#ingredients {
+  height: 550px;
+  width: 370px;
+}
+
+.signIn:hover {
+  background-color: white;
+  color: #2196f3;
+}
+
+#closeBatton {
+  width: 52px;
+  height: 52px;
+  position: absolute;
+  right: -1.9em;
+  top: -2.5em;
+  border-radius: 50%;
+  transition: transform 600ms;
+  color: white;
+  background-color: #363D4E;
+}
+
+#closeBatton:hover {
+  transform: rotate(360deg) scale(1.10);
+  transition: transform 600ms;
+  background: #3E465A;
+}
+
+#closeBatton span, span:before, span:after {
+  background: #FFFFFF;
+  content: '';
+  cursor: pointer;
+  display: block;
+  height: 2px;
+  position: absolute;
+  width: 20px;
+}
+
+#closeBatton span:first-child {
+  background: none;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#closeBatton span:before {
+  transform: rotate(45deg);
+}
+
+#closeBatton span:after {
+  transform: translateY(-2px) rotate(-45deg);
+  top: 2px;
+}
+
+.buttonsPopUp{
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  
+}
+
+.buttonsPopUp button{
+  margin-right: 10px;
+}
+
+.finish{
+text-align: center;
+}
+
+.orders > :nth-child(1) {
+  flex-basis: 25%;
+}
+
+.error{
+  position: relative;
+  text-align: center;
+}
