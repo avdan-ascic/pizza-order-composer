@@ -49,38 +49,7 @@ const Order = () => {
       price: Object.values(sumOfAllOrders).reduce((prev, curr) => prev + curr),
     });
   };
-  // const orderDough = () => {
-  //   if (!addressesAdded) {
-  //     setError("You must add an address before placing an order");
-
-  //     setTimeout(() => {
-  //       setError("");
-  //     }, 3000);
-
-  //     return;
-  //   }
-
-  //   const orderToSend = {
-  //     price: Object.values(sumOfAllOrders).reduce((prev, curr) => prev + curr),
-  //     paymentUponDelivery: orderDetails.paymentUponDelivery,
-  //     notes: orderDetails.notes,
-  //     additionalIngredients: [
-  //       ...order.map((item) => item.ingredients.map((item) => item)),
-  //     ],
-  //     quantity: [...quantity],
-  //     pricePerItem: [...sumOfAllOrders],
-  //     name: [...order.map((item) => item.donut.map((item) => item.name))],
-  //   };
-
-  //   create(orderToSend).then((data) => {
-  //     if (data.error) setError({ error: data.error });
-  //     else {
-  //       dispatch(clearOrder());
-  //       dispatch(setOrderWindowModal(true));
-  //     }
-  //   });
-  // };
-
+  
   const orderDough = () => {
     if (!addressesAdded) {
       setError("You must add an address before placing an order");

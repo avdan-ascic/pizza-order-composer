@@ -9,7 +9,6 @@ const OrderHistory = () => {
     orderList()
       .then((data) => {
         setOrderHistory(data);
-        console.log(data);
       })
       .catch((err) => console.log(err));
   }, []);

@@ -41,7 +41,8 @@ const AddNewAddress = ({ onAddressesAdded }) => {
 
   useEffect(() => {
     updateList();
-  }, []);
+    onAddressesAdded(addresses.length > 0);
+  }, [addresses, onAddressesAdded]);
 
   const onNewClick = () => {
     setMakeAddress(true);
@@ -75,7 +76,6 @@ const AddNewAddress = ({ onAddressesAdded }) => {
             setMakeAddress(false);
             setValues({ address: "", floor: 1, error: "" });
             updateList();
-            onAddressesAdded(true);
           }
         })
         .catch((error) => {
@@ -84,6 +84,7 @@ const AddNewAddress = ({ onAddressesAdded }) => {
         });
     }
   };
+
   return (
     <div className="addressWrapper">
       <div className="addresses">

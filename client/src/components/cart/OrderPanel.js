@@ -10,12 +10,11 @@ import {
   decreaseQuantity,
   setTotalPriceOfEachOrder,
   getSumOfAllOrders,
-  setSigninModal,
 } from "../../features/pizzaSlice";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { useNavigate } from "react-router-dom";
 
-const OrderPanel = ({ loggedIn }) => {
+const OrderPanel = ({ loggedIn, setLoginModal }) => {
   const navigate = useNavigate();
   const quantity = useSelector(getQuantity);
   const dispatch = useDispatch();
@@ -36,7 +35,7 @@ const OrderPanel = ({ loggedIn }) => {
     if (loggedIn) {
       navigate("/order");
     } else {
-      dispatch(setSigninModal(true));
+      setLoginModal(true);
     }
   };
 

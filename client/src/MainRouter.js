@@ -12,11 +12,13 @@ import OrderWindowModal from "./components/order/OrderModalWindow";
 import IngredientsSelector from "./components/cart/IngredientsSelector";
 
 const MainRouter = () => {
-  
   const [loggedIn, setLoggedIn] = useState(() => {
     const storedLoggedin = sessionStorage.getItem("loggedIn");
     return storedLoggedin ? JSON.parse(storedLoggedin) : false;
   });
+  const [loginModal, setLoginModal] = useState(false);
+  const [registerModal, setRegisterModal] = useState(false);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     sessionStorage.setItem("loggedIn", JSON.stringify(loggedIn));
@@ -24,16 +26,44 @@ const MainRouter = () => {
 
   return (
     <Router>
-      <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
-      <Signin setLoggedIn={setLoggedIn} />
-      <Signup />
+      <Header
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        setLoginModal={setLoginModal}
+      />
+      <div
+        style={{
+          color: "red",
+          fontSize: "2em",
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "2em",
+        }}
+      >
+        {message}
+      </div>
+      <Signin
+        setLoggedIn={setLoggedIn}
+        loginModal={loginModal}
+        setLoginModal={setLoginModal}
+        setRegisterModal={setRegisterModal}
+        setMessage={setMessage}
+      />
+      <Signup
+        registerModal={registerModal}
+        setLoginModal={setLoginModal}
+        setRegisterModal={setRegisterModal}
+        setMessage={setMessage}
+      />
       <IngredientsSelector />
       <OrderWindowModal setLoggedIn={setLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route
           path="/addToCart"
-          element={<AddToCart loggedIn={loggedIn} />}
+          element={
+            <AddToCart loggedIn={loggedIn} setLoginModal={setLoginModal} />
+          }
         ></Route>
         <Route path="/order" element={<Order />}></Route>
         <Route path="/orderHistory" element={<OrderHistory />}></Route>

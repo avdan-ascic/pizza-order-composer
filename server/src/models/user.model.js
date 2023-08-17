@@ -21,8 +21,6 @@ const UserSchema = mongoose.Schema({
 });
 
 UserSchema.pre("save", async function (next) {
-  this.name = this.name.toLowerCase();
-
   // Check for same name or email
   const userModel = mongoose.model("User", UserSchema);
 

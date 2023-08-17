@@ -14,17 +14,17 @@ import Pizza from "../../assets/images/logo.png";
 import {
   getQuantity,
   resetStore,
-  setSigninModal,
 } from "../../features/pizzaSlice";
 import { logout } from "../../api/user-api";
 
-const Header = ({ loggedIn, setLoggedIn }) => {
+const Header = ({ loggedIn, setLoggedIn, setLoginModal }) => {
   const dispatch = useDispatch();
   const quantity = useSelector(getQuantity);
   const navigate = useNavigate();
 
   const signinUser = () => {
-    dispatch(setSigninModal(true));
+    // dispatch(setSigninModal(true));
+    setLoginModal(true);
   };
 
   const handleSignout = () => {

@@ -3,12 +3,12 @@ import Row from "react-bootstrap/Row";
 import AddToCartLeftPanel from "./AddToCartLeftPanel";
 import OrderPanel from "./OrderPanel";
 
-const AddToCart = ({ loggedIn }) => {
+const AddToCart = ({ loggedIn, setLoginModal }) => {
   return (
     <Container>
       <Row>
         <AddToCartLeftPanel />
-        <OrderPanel loggedIn={loggedIn} />
+        <OrderPanel loggedIn={loggedIn} setLoginModal={setLoginModal} />
       </Row>
     </Container>
   );

@@ -14,6 +14,10 @@ const create = async (user) => {
       user,
       { headers }
     );
+    if (response.data.message) {
+      return { successMessage: response.data.message };
+    }
+
     return response.data;
   } catch (err) {
     console.log(err);
@@ -28,6 +32,9 @@ const login = async (user) => {
       user,
       { headers }
     );
+    if (response.data.message) {
+      return { successMessage: response.data.message };
+    }
     return response.data;
   } catch (err) {
     console.log(err);

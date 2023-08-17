@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "react-bootstrap/esm/Button";
@@ -8,19 +8,16 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/esm/Image";
 import Pizza from "../../assets/images/logo.png";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  getSignupModal,
-  setSigninModal,
-  setSignupModal,
-} from "../../features/pizzaSlice";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { create } from "../../api/user-api";
 
-const Signup = () => {
-  const signupModalStatus = useSelector(getSignupModal);
-  const dispatch = useDispatch();
+const Signup = ({
+  registerModal,
+  setRegisterModal,
+  setLoginModal,
+  setMessage,
+}) => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [repeatedPasswordVisibility, setRepeatedPasswordVisibility] =
     useState(false);
@@ -35,8 +32,8 @@ const Signup = () => {
   });
 
   const redirectToSignin = () => {
-    dispatch(setSigninModal(true));
-    dispatch(setSignupModal(false));
+    setLoginModal(true);
+    setRegisterModal(false);
   };
 
   const handleChange = (name) => (event) => {
@@ -55,24 +52,30 @@ const Signup = () => {
         if (data.errors && data.errors.length > 0) {
           const errorMessage = data.errors.map((error) => error.msg).join(", ");
           setUserData({ ...userData, error: errorMessage });
+          setTimeout(() => {
+            setUserData({
+              ...userData,
+              error: "",
+            });
+          }, 3000);
         } else {
+          setRegisterModal(false);
+          setLoginModal(true);
           setUserData({ ...userData, redirect: true });
+          if (data.successMessage) {
+            setMessage(data.successMessage);
+          }
+          setTimeout(() => {
+            setMessage("");
+          }, 3000);
         }
       })
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    if (userData.redirect) {
-      dispatch(setSignupModal(false));
-      dispatch(setSigninModal(true));
-    }
-    // eslint-disable-next-line
-  }, [userData.redirect]);
-
   return (
     <Modal
-      show={signupModalStatus}
+      show={registerModal}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered

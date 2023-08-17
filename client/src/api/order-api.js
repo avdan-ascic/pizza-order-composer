@@ -8,7 +8,6 @@ const headers = {
 };
 
 export const create = async (order) => {
-  console.log(order);
   try {
     const response = await axios.post(
       `${baseUrl.server}/api/order/add`,

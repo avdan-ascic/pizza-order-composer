@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Button from "react-bootstrap/esm/Button";
 import Row from "react-bootstrap/esm/Row";
@@ -9,16 +9,16 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Image from "react-bootstrap/esm/Image";
 import Pizza from "../../assets/images/logo.png";
-import {
-  getSigninModal,
-  setSigninModal,
-  setSignupModal,
-  setUserSiginStatus,
-} from "../../features/pizzaSlice";
+import { setUserSiginStatus } from "../../features/pizzaSlice";
 import { login } from "../../api/user-api";
 
-const Signin = ({ setLoggedIn }) => {
-  const signinModalStatus = useSelector(getSigninModal);
+const Signin = ({
+  setLoggedIn,
+  loginModal,
+  setLoginModal,
+  setRegisterModal,
+  setMessage
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -55,7 +55,14 @@ const Signin = ({ setLoggedIn }) => {
           }, 3000);
         } else {
           setLoggedIn(true);
+          setLoginModal(false);
           setUserLoginData({ ...userLoginData, redirect: true, error: "" });
+          if (data.successMessage) {
+            setMessage(data.successMessage);
+          }
+          setTimeout(() => {
+            setMessage("");
+          }, 3000);
         }
       })
       .catch((err) => console.log(err));
@@ -63,7 +70,6 @@ const Signin = ({ setLoggedIn }) => {
 
   useEffect(() => {
     if (userLoginData.redirect) {
-      dispatch(setSigninModal(false));
       dispatch(setUserSiginStatus(true));
       navigate("/addToCart");
     }
@@ -71,13 +77,13 @@ const Signin = ({ setLoggedIn }) => {
   }, [userLoginData.redirect]);
 
   const redirectToSignup = () => {
-    dispatch(setSigninModal(false));
-    dispatch(setSignupModal(true));
+    setLoginModal(false);
+    setRegisterModal(true);
   };
 
   return (
     <Modal
-      show={signinModalStatus}
+      show={loginModal}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
